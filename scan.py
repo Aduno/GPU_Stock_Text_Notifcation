@@ -3,7 +3,6 @@ import threading
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
-from playsound import playsound
 import random
 import time
 from selenium import webdriver
@@ -53,16 +52,23 @@ def bestBuy():
         
         for url in stock:
             link += (base_url+url+"\n")
-
+        print(link)
+        
         if loop==False:
             email_alert("",link,"[your phone number]@[carrier domain].ca")
             print(link)
 
         time.sleep(random.randint(15,17))
         driver.refresh()
-def canadaComp:
+        
+def timer():
+    while True:
+        print(datetime.now().strftime('%d %H:%M:%S'))
+        time.sleep(60)
     
 best = threading.Thread(target=bestBuy)
-canadaComp = threading.Thread(target=canadaComp)
+currentTime = threading.Thread(target=timer)
+#canadaComp = threading.Thread(target=canadaComp)
 
 best.start()
+currentTime.start()
