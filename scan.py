@@ -55,7 +55,7 @@ def bestBuy(search):
             email_alert("",link,phone)
             print(link)
 
-        time.sleep(random.randint(30,50))
+        time.sleep(random.randint(17,28))
         driver.refresh()
         
 def timer():
@@ -77,13 +77,13 @@ if __name__==  "__main__":
     searchList =[]
     currentTime = threading.Thread(target=timer)
 
-    #The user input can be removed if desired.
-    user = input("Enter the app email. Format: [youremailhere]@example.com: ")
-    password = input("Enter the app password: ")
-    phone = input("Enter phone details. Format: [your phone number]@[carrier domain].ca: ")
+    f = open("info.txt","r")
+    user = f.readline()
+    password = f.readline()
+    phone =  f.readline()
 
     print("What GPU are you looking for?")
-    print("Please enter one at a time. Once done, enter ""done""")
+    print("Please enter one at a time. Once done, enter \"done\"")
     print("Available options: 3060,3060ti,3070,3080,3090: ")
     while loop:
         search = input()
