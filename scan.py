@@ -15,7 +15,6 @@ def email_alert(subject,body,to):
     msg.set_content(body)
     msg['subject']=subject
     msg['to'] = to
-    
     msg['from'] = user
 
     server = smtplib.SMTP("smtp.gmail.com",587)
@@ -34,19 +33,19 @@ def bestBuy(search):
     driver.get(search)
     time.sleep(2)
     loop = True
+
     while loop:
         html = driver.page_source
         soup = bs4.BeautifulSoup(html,"html.parser")
-
         item = soup.find_all("span",{"class":"container_3LC03"})
-
+        base_url = "https://www.bestbuy.ca"
         stock = []
         i = 0
+
         for product in item:
             if("Available" in product.text):
                 stock.append(product.find_parent("a")['href'])
                 loop=False
-        base_url = "https://www.bestbuy.ca"
         
         for url in stock:
             link += (base_url+url+"\n")
