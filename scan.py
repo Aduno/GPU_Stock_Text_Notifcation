@@ -43,7 +43,7 @@ def bestBuy(search):
         stock = []
         i = 0
         for product in item:
-            if("Coming soon" in product.text):
+            if("Available" in product.text):
                 stock.append(product.find_parent("a")['href'])
                 loop=False
         base_url = "https://www.bestbuy.ca"
