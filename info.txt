@@ -1,0 +1,3 @@
+user = "[youremailhere]@example.com"
+password = "[Generated App password]"
+phone = "[your phone number]@[carrier domain].[com or ca]"
