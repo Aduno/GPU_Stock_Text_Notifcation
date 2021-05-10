@@ -61,25 +61,38 @@ def timer():
     while True:
         print(datetime.now().strftime('%d %H:%M:%S'))
         time.sleep(60)
-    
+def readFile():
+    f = open("info.txt","r")
+    user = f.readline()
+    password = f.readline()
+    phone = f.readline()
+
 if __name__==  "__main__":
     i=0
     loop=True
-    gpuLinks ={
+    gpuBestBuy ={
         "3060": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3060",
         "3060ti": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3060%2BTi",
         "3070": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3070",
         "3080": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3080",
         "3090": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3090"
-
+    }
+    gpuMemoryExp ={
+        "3060": "https://www.memoryexpress.com/Category/VideoCards?FilterID=f1b0a6e4-f41e-5fea-c242-d1bac7b02bf2",
+        "3060ti": "https://www.memoryexpress.com/Category/VideoCards?FilterID=75668704-944f-8e1a-4cca-036beb9638a8",
+        "6700xt": "https://www.memoryexpress.com/Category/VideoCards?FilterID=0901d9d6-31e0-987f-382c-e66e7ee23a8a",
+        "6800": "https://www.memoryexpress.com/Category/VideoCards?FilterID=8d5ba2df-0447-8b14-4791-aee8db2800b0",
+        "6800xt": "https://www.memoryexpress.com/Category/VideoCards?FilterID=9705ada8-e2b2-0ac9-738e-5e92c99a5932",
+        "6900xt": "https://www.memoryexpress.com/Category/VideoCards?FilterID=a546466e-2a58-905e-129b-fc735319acbf"
+        
     }
     searchList =[]
     currentTime = threading.Thread(target=timer)
-
-    f = open("info.txt","r")
-    user = f.readline()
-    password = f.readline()
-    phone =  f.readline()
+    readFile()
+    # f = open("info.txt","r")
+    # user = f.readline()
+    # password = f.readline()
+    # phone =  f.readline()
 
     print("What GPU are you looking for?")
     print("Please enter one at a time. Once done, enter \"done\"")
