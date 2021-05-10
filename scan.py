@@ -29,6 +29,7 @@ def bestBuy(search):
     ua = UserAgent()
     opts = Options()
     opts.add_argument("user-agent="+ua.random)
+    opts.add_argument("headless")
     driver = webdriver.Chrome(options=opts)
     driver.get(search)
     time.sleep(2)
@@ -89,10 +90,10 @@ if __name__==  "__main__":
     searchList =[]
     currentTime = threading.Thread(target=timer)
     readFile()
-    # f = open("info.txt","r")
-    # user = f.readline()
-    # password = f.readline()
-    # phone =  f.readline()
+    f = open("info.txt","r")
+    user = f.readline()
+    password = f.readline()
+    phone =  f.readline()
 
     print("What GPU are you looking for?")
     print("Please enter one at a time. Once done, enter \"done\"")
