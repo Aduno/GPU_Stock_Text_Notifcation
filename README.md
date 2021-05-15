@@ -1,5 +1,5 @@
 # Description
-This is specifically targeted for Canadian websites/users. This search bot can be setup to search 3060,3060ti, 3070, 3080, and 3090. Currently, it is only setup for Bestbuy but additional sites like newegg and memoryexpress will be added (Excluding Canada computers since they are not restocking due to the backlogged preorders). AMD cards will be added for the near future as well. 
+This is specifically targeted for Canadian websites/users. This search bot can be setup to search Nvidia's 3000s and AMD 6000 series cards. Currently, it is only setup for Bestbuy and memoryexpress. It is recommended that you use a VPN to prevent any risk of ip blocking.
 
 ## Set up
 To have the cellphone SMS notification that sends the link directly to you when it is in stock, you will need to find the sms address for your specific carrier. This can be found from https://www.comparecellular.ca/text-messaging/.
