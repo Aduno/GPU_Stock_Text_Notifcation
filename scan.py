@@ -42,19 +42,20 @@ def bestBuy(search):
         stock = []
         i = 0
 
+        #Finds item in stock and takes the href and stops the loop
         for product in item:
             if("Available" in product.text):
                 stock.append(product.find_parent("a")['href'])
                 loop=False
-        
+        #Appends a full url from the href
         for url in stock:
             link += (base_url+url+"\n")
-        
+        #Sends a message to the phone
         if loop==False:
             email_alert("",link,phone)
             print(link)
 
-        time.sleep(random.randint(17,28))
+        time.sleep(random.randint(19,24))
         driver.refresh()
 
 def memExp(search):
@@ -66,7 +67,39 @@ def memExp(search):
     driver.get(search)
     time.sleep(2)
     loop = True
-        
+
+    while loop:
+        html = driver.page_source
+        soup = bs4.BeautifulSoup(html,"html.parser")
+        itemTotal = soup.find_all("div",{"class":"c-shca-icon-item"})
+        base_url = "https://www.memoryexpress.com"
+        stock = []
+        pop = []
+        #Different method of extracting info for memory express compared to BB
+        #Removes the elements that are out of stock
+        for x in range(len(itemTotal)):
+            if(itemTotal[x].find("div",{"class":"c-shca-icon-item__body-inventory"})):
+                itemTotal[x].decompose()
+                pop.insert(0,x)
+        for index in pop:
+            del itemTotal[index]
+        #Extracts the href links from the tag
+        for item in itemTotal:
+            tag = item.find("a",{"class":"c-shca-add-product-button c-shca-icon-item__summary-buy"})
+            stock.append(tag.get("href"))
+
+        #Appends the full url from the href and stops the loop
+        for url in stock:
+            link += (base_url+url+"\n")
+            loop=False
+
+        #Sends a message to the phone if there are items in stock
+        if loop==False:
+            email_alert("",link,phone)
+            print(link) 
+        time.sleep(random.randint(20,30))
+        driver.refresh()
+
 def timer():
     while True:
         print(datetime.now().strftime('%d %H:%M:%S'))
@@ -78,8 +111,7 @@ def readFile():
     phone = f.readline()
     return (user,password,phone)
 
-def inputCheck():
-    loop=False
+
 if __name__==  "__main__":
     gpuBestBuy ={
         "3060": "https://www.bestbuy.ca/en-ca/category/graphics-cards/20397?path=category%253AComputers%2B%2526%2BTablets%253Bcategory%253APC%2BComponents%253Bcategory%253AGraphics%2BCards%253Bcustom0graphicscardmodel%253AGeForce%2BRTX%2B3060",
